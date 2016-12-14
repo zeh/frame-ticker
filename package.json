@@ -1,6 +1,6 @@
 {
   "name": "frame-ticker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Frame ticker with easy events for animation or games in JavaScript or TypeScript",
   "main": "./dist/FrameTicker.js",
   "types": "./dist/src/FrameTicker.d.ts",
