@@ -1,0 +1,7 @@
+.tscache
+.nyc_output
+.coveralls.yml
+node_modules
+npm-debug.log
+_*.txt
+_*.bat
