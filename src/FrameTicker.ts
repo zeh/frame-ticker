@@ -101,12 +101,15 @@ export default class FrameTicker {
 	 *
 	 * @see #isRunning
 	 */
-	public pause():void {
+	public pause():void {		
 		if (this._isRunning) {
 			this._isRunning = false;
 			this._onPause.dispatch();
-
+		}
+		// Ensure that any animation frame handles are cleared
+		if (this._animationFrameHandle) {
 			window.cancelAnimationFrame(this._animationFrameHandle);
+			this._animationFrameHandle = null;
 		}
 	}
 
@@ -267,6 +270,10 @@ export default class FrameTicker {
 	// EVENT INTERFACE ------------------------------------------------------------------------------------------------
 
 	private animateOnce(): void {
+		// If there is somehow a pre-existing loop, clear it before starting another.
+		if (this._animationFrameHandle)
+			window.clearAnimationFrame(this._animationFrameHandle);
+		
 		this._animationFrameHandle = window.requestAnimationFrame(() => this.onFrame());
 	}
 
